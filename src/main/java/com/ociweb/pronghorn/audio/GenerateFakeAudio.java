@@ -29,6 +29,9 @@ public class GenerateFakeAudio extends PronghornStage {
             PipeWriter.publishWrites(output);
         }
         
+        //if we have written 10000 items
+        //PipeWriter.publishEOF(output);
+        
         
         //call this when you are all done.
         //requestShutdown();

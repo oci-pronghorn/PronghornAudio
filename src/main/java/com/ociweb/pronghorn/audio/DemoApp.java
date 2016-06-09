@@ -47,7 +47,8 @@ public class DemoApp {
         GenerateFakeAudio prod = new  GenerateFakeAudio(graphManager, pipe1);
         
        // PipeCleanerStage<AudioSchema> cleaner = new PipeCleanerStage<>(graphManager, pipe1);
-        ConsoleJSONDumpStage<AudioSchema> dump = new ConsoleJSONDumpStage<AudioSchema>(graphManager, pipe1);
+       // ConsoleJSONDumpStage<AudioSchema> dump = new ConsoleJSONDumpStage<AudioSchema>(graphManager, pipe1);
+        ConsumeAudoExample dump2 = new ConsumeAudoExample(graphManager, pipe1);
         
         return graphManager;
     }
