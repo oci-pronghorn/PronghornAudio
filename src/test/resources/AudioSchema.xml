@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xmlns="http://www.fixprotocol.org/ns/fast/td/1.1">
+
+  <template name="Sample" id="110">
+     <int32 name="Value" id="111"/>
+  </template>  
+  
+  <template name="StereoSample" id="120">
+     <int32 name="LeftValue" id="122"/>
+     <int32 name="RightValue" id="122"/>
+  </template>  
+    
+  <template name="SampleWithTime" id="130">
+     <int32 name="Value" id="112"/>
+     <uInt64 name="Time" id="133"/>
+  </template>  
+
+
+</templates>
