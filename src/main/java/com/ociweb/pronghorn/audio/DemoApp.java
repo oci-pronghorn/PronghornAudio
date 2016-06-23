@@ -26,6 +26,8 @@ public class DemoApp {
        
         DemoApp instance = new DemoApp();
         
+        // RECORD/WRITE
+        
 		String	strFilename = "recording1.wav";
 		File	outputFile = new File(strFilename);
 
@@ -61,76 +63,36 @@ public class DemoApp {
 		*/
 		AudioFileFormat.Type	targetType = AudioFileFormat.Type.WAVE;
 
-		/* Now, we are creating an SimpleAudioRecorder object. It
-		   contains the logic of starting and stopping the
-		   recording, reading audio data from the TargetDataLine
-		   and writing the data to a file.
-		*/
-		SimpleAudioRecorder	recorder = new SimpleAudioRecorder(
-			targetDataLine,
-			targetType,
-			outputFile);
-
-		/* We are waiting for the user to press ENTER to
-		   start the recording. (You might find it
-		   inconvenient if recording starts immediately.)
-		*/
-		out("Press ENTER to start the recording.");
-		try
-		{
-			System.in.read();
-		}
-		catch (IOException e)
-		{
-			e.printStackTrace();
-		}
-		/* Here, the recording is actually started.
-		 */
-		recorder.start();
-		out("Recording...");
-
-		/* And now, we are waiting again for the user to press ENTER,
-		   this time to signal that the recording should be stopped.
-		*/
-		out("Press ENTER to stop the recording.");
-		try
-		{
-			System.in.read();
-		}
-		catch (IOException e)
-		{
-			e.printStackTrace();
-		}
-
-		/* Here, the recording is actually stopped.
-		 */
-		recorder.stopRecording();
-		out("Recording stopped.");
-		        
         
-//		GraphManager graphManager = instance.buildGraph(new GraphManager());
-//        
-//        ThreadPerStageScheduler scheduler = new ThreadPerStageScheduler(graphManager);
-//        
-//        scheduler.startup();
-//        
-//        try {
-//            Thread.sleep(10000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-//        
-//        
-//        scheduler.shutdown();
-//        scheduler.awaitTermination(10, TimeUnit.SECONDS);
+		GraphManager graphManager = instance.buildGraph(new GraphManager());
+        
+        ThreadPerStageScheduler scheduler = new ThreadPerStageScheduler(graphManager);
+        
+        scheduler.startup();
+        
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        
+        
+        scheduler.shutdown();
+        scheduler.awaitTermination(10, TimeUnit.SECONDS);
+        
+        // TODO
+        // READ
+        
+        // PROCESS
+        
+        // MONITORING / REALTIME RESPONSE
+        
+        
     }
         
 
     private GraphManager buildGraph(GraphManager graphManager) {
        
-        
-        
-        
         Pipe<AudioSchema> pipe1 = new Pipe<AudioSchema>(config);
         //Pipe<AudioSchema> pipe2 = new Pipe<AudioSchema>(config);
         //Pipe<AudioSchema> pipe3 = new Pipe<AudioSchema>(config);
