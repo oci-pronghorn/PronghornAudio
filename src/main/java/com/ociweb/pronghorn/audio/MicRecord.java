@@ -33,6 +33,7 @@ public class MicRecord extends PronghornStage{
     
     @Override
     public void startup() {
+    	/*
     	float sampleRate = 0;
         int sampleSizeInBits = 0;
         int channels = 0;
@@ -40,6 +41,12 @@ public class MicRecord extends PronghornStage{
         float frameRate = 0;
         boolean bigEndian = false;
         AudioFormat format = new AudioFormat(Encoding.PCM_SIGNED, sampleRate, sampleSizeInBits, channels, frameSize, frameRate, bigEndian);
+        */
+        
+        // ^skip that, hard code the format encoding
+        //AudioFormat format = new AudioFormat(Encoding.PCM_SIGNED, 44100.0F, 16, 1, 4, 44100.0F, false);
+        AudioFormat format = new AudioFormat(AudioFormat.Encoding.PCM_SIGNED, 44100.0F, 16, 1, 4, 44100.0F, false);
+    	
         audioInputStream = new AudioInputStream(microphone);
         
         
@@ -83,7 +90,10 @@ public class MicRecord extends PronghornStage{
       		 */
       		microphone.start();
       		System.out.println("Recording...");
-      		microphone.read(b, off, len);
+      		
+      		System.out.println("Buffer size = " + microphone.getBufferSize());
+      		// *** 
+      		//microphone.read(b, off, len);
      		try
 			{
             	AudioSystem.write(audioInputStream, targetType, outputFile);
